@@ -21,8 +21,8 @@ character_mana = None
 
 clear_screen()
 
-
-print('Deep Dungeons - An interactive fiction game in python.')	
+print(game_title)
+print('Fictional Game Created in Python.')	
 
 def Intro():
 	print('')
@@ -100,7 +100,9 @@ def create_character_skill_sheet():
 	clear_screen()
 	global character_name, character_race, character_class, character_strength, character_dexterity, character_stamina, character_intelligence, character_intuition, character_charisma, character_mana
 	print('''
-	   Now let's determine your character's skills, which you will use throughout the game. In this game, your character has seven skills:
+	   Now let's determine your character's skills, which you will use throughout the game.
+	   In this game, your character has seven skills:
+
 	   - Strength AKA bodily power, which you will use in combat or any strength test
 	   - Dexterity AKA physical agility, which you will use in any ability test
 	   - Stamina AKA life, which determines your life energy, points will be lost when you are hurt, and whenever Stamina reaches 0, your character dies.
@@ -202,6 +204,7 @@ def create_character_skill_sheet():
 	'''
 	Class: '''+character_class+
 	'''
+
 	Strength: '''+str(character_strength)+
 	'''
 	Dexterity: '''+str(character_dexterity)+
@@ -216,6 +219,7 @@ def create_character_skill_sheet():
 	'''
 	Mana: '''+str(character_mana)+
 	'''
+
 	''')
 	input('Press Enter to apply your skills modifiers.')
 
@@ -224,6 +228,110 @@ create_character_skill_sheet()
 def modify_skills():
 	clear_screen()
 	global character_name, character_race, character_class, character_strength, character_dexterity, character_stamina, character_intelligence, character_intuition, character_charisma, character_mana
-	print('To modify your skills, you will roll 3 six face dice for each of your skill.')
+	print('To modify your skills, you will roll 3 6-faced dice for each of your skills.')
 	print('Then the game will take the 2 highest values and add your total score to the revelant skill.')
 	
+	input('Press Enter to roll for Strength')
+	roll1 = randint(1,6)
+	roll2 = randint(1,6)
+	roll3 = randint(1,6)
+	rolls = [roll1, roll2, roll3]
+	rolls.sort()
+	print('You rolled: '+str(roll1)+', '+str(roll2)+', & '+str(roll3)+'!')
+	print('Your highest values are: '+str(rolls[-2:]))
+	character_strength = character_strength + rolls[-1] + rolls[-2]
+
+	input('Press Enter to roll for Dexterity')
+	roll1 = randint(1,6)
+	roll2 = randint(1,6)
+	roll3 = randint(1,6)
+	rolls = [roll1, roll2, roll3]
+	rolls.sort()
+	print('You rolled: '+str(roll1)+', '+str(roll2)+', & '+str(roll3)+'!')
+	print('Your highest values are: '+str(rolls[-2:]))
+	character_dexterity = character_dexterity + rolls[-1] + rolls[-2]
+
+	input('Press Enter to roll for Stamina')
+	roll1 = randint(1,6)
+	roll2 = randint(1,6)
+	roll3 = randint(1,6)
+	rolls = [roll1, roll2, roll3]
+	rolls.sort()
+	print('You rolled: '+str(roll1)+', '+str(roll2)+', & '+str(roll3)+'!')
+	print('Your highest values are: '+str(rolls[-2:]))
+	character_stamina = character_stamina + rolls[-1] + rolls[-2]
+
+	input('Press Enter to roll for Intelligence')
+	roll1 = randint(1,6)
+	roll2 = randint(1,6)
+	roll3 = randint(1,6)
+	rolls = [roll1, roll2, roll3]
+	rolls.sort()
+	print('You rolled: '+str(roll1)+', '+str(roll2)+', & '+str(roll3)+'!')
+	print('Your highest values are: '+str(rolls[-2:]))
+	character_intelligence = character_intelligence + rolls[-1] + rolls[-2]
+
+	input('Press Enter to roll for Intuition')
+	roll1 = randint(1,6)
+	roll2 = randint(1,6)
+	roll3 = randint(1,6)
+	rolls = [roll1, roll2, roll3]
+	rolls.sort()
+	print('You rolled: '+str(roll1)+', '+str(roll2)+', & '+str(roll3)+'!')
+	print('Your highest values are: '+str(rolls[-2:]))
+	character_intuition = character_intuition + rolls[-1] + rolls[-2]
+
+	input('Press Enter to roll for Charisma')
+	roll1 = randint(1,6)
+	roll2 = randint(1,6)
+	roll3 = randint(1,6)
+	rolls = [roll1, roll2, roll3]
+	rolls.sort()
+	print('You rolled: '+str(roll1)+', '+str(roll2)+', & '+str(roll3)+'!')
+	print('Your highest values are: '+str(rolls[-2:]))
+	character_charisma = character_charisma + rolls[-1] + rolls[-2]
+
+	input('Press Enter to roll for Mana')
+	roll1 = randint(1,6)
+	roll2 = randint(1,6)
+	roll3 = randint(1,6)
+	rolls = [roll1, roll2, roll3]
+	rolls.sort()
+	print('You rolled: '+str(roll1)+', '+str(roll2)+', & '+str(roll3)+'!')
+	print('Your highest values are: '+str(rolls[-2:]))
+	character_mana = character_mana + rolls[-1] + rolls[-2]
+
+	input('Press Enter to Continue...')
+	clear_screen()
+	print('''
+	   Congratulations! You have completed your character creation!
+	   Your final character sheet is:
+	   
+	   Name: '''+character_name+
+	   '''
+	   Race: '''+character_race+
+	   '''
+	   Class: '''+character_class+
+	   '''
+	   
+	   Strength: '''+str(character_strength)+
+	   '''
+	   Dexterity: '''+str(character_dexterity)+
+	   '''
+	   Stamina: '''+str(character_stamina)+
+	   '''
+	   Intelligence: '''+str(character_intelligence)+
+	   '''
+	   Intuition: '''+str(character_intuition)+
+	   '''
+	   Charisma: '''+str(character_charisma)+
+	   '''
+	   Mana: '''+str(character_mana)+
+	   '''
+	   
+	   ''')
+	input('Press Enter to begin your adventure, if you dare...')
+
+modify_skills()
+
+
