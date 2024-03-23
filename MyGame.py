@@ -110,8 +110,11 @@ def create_character_skill_sheet():
 	   - Stamina AKA life, which determines your life energy, points will be lost when you are hurt, and whenever Stamina reaches 0, your character dies.
 
 	   - Intelligence AKA analytic skill, which you will use for information recall and general understanding of concepts.
+
 	   - Intuition AKA insight, which you will use for awareness whether it's with other races, classes, animals, items, or places.
+
 	   - Charisma AKA confidence, which you will use for occasional persuasion of leadership or friendship opportunities.
+
 	   - Mana AKA magic, which you will use whenever you need to cast a spell or use/inspect magical items or places.
 
 	   Depending on your race and class, you will have a certain point-base already calculated by the game.
@@ -346,7 +349,7 @@ def Scene_1():
 					 Tis darker than dusk before the dawn...
 					 Luckily your torch is lit and you can see up to 20 paces.
 					 The stone walls are damp, the smell of rats and orcs is STRONG...
-					 You walk down a narrow corridor, until you reach a think, stone wall.
+					 You walk down a narrow corridor, until you reach a thick, stone wall.
 					 
 					 The corridor continues on the left and to the right...
 					 
@@ -471,14 +474,17 @@ def combat():
 		if char_roll + character_strength >= monst_roll + orc[0]:
 			print('You hit the monster!')
 			orc[1] = orc[1] - randint(1,6)
+
 		else:
 			print('The monster hits you!')
 			character_stamina = character_stamina - randint(1,6)
+
 	if character_stamina > 0:
 		print('''
 		You defeated the orc!
 		Congratulations!
 		''')
+
 	else:
 		print('''
 		You lost...
