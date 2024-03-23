@@ -75,7 +75,7 @@ def create_character():
 		3 - Druid
 		4 - Warlock
 
-		>''')
+		> ''')
 		if class_choice == '1':
 			character_class = 'Cleric'
 		elif class_choice == '2':
@@ -104,8 +104,11 @@ def create_character_skill_sheet():
 	   In this game, your character has seven skills:
 
 	   - Strength AKA bodily power, which you will use in combat or any strength test
+
 	   - Dexterity AKA physical agility, which you will use in any ability test
+
 	   - Stamina AKA life, which determines your life energy, points will be lost when you are hurt, and whenever Stamina reaches 0, your character dies.
+
 	   - Intelligence AKA analytic skill, which you will use for information recall and general understanding of concepts.
 	   - Intuition AKA insight, which you will use for awareness whether it's with other races, classes, animals, items, or places.
 	   - Charisma AKA confidence, which you will use for occasional persuasion of leadership or friendship opportunities.
@@ -334,4 +337,154 @@ def modify_skills():
 
 modify_skills()
 
+def Scene_1():
+	clear_screen()
+	choice = None
+	while choice is None:
+		user_input = input('''
+					 You have entered the Castle Dungeon...
+					 Tis darker than dusk before the dawn...
+					 Luckily your torch is lit and you can see up to 20 paces.
+					 The stone walls are damp, the smell of rats and orcs is STRONG...
+					 You walk down a narrow corridor, until you reach a think, stone wall.
+					 
+					 The corridor continues on the left and to the right...
+					 
+					 What do you do?
+					 
+					 1 - Turn Left
+					 2 - Turn Right
+					 > ''')
+		if user_input == '1' or user_input == 'turn left' or user_input == 'Turn Left' or user_input == 'Turn left':
+			choice = '1'
+			Scene_2()
 
+		elif user_input == '2' or user_input == 'turn right' or user_input == 'Turn Right' or user_input == 'Turn right':
+			choice = '2'
+			Scene_3()
+
+		else:
+			print('''
+		 Not a valid selection...
+		 Either type a number or "Turn Left" / "Turn Right"
+		 ''')
+			
+def Scene_2():
+	clear_screen()
+	choice = None
+	while choice is None:
+		user_input = input('''
+					 From the darkness behind you...
+					 
+					 You hear a strange noise...
+					 
+					 What do you do?
+					 
+					 1 - Continue Walking
+					 2 - Stop to Listen
+					 
+					 > ''')
+		if user_input == '1' or user_input == 'Continue' or user_input == 'Continue Walking' or user_input == 'continue' or user_input == 'continue walking':
+			choice = '1'
+			combat()
+
+		elif user_input == '2' or user_input == 'Stop' or user_input == 'Stop to Listen' or user_input == 'stop' or user_input == 'stop to listen' or user_input == 'stop listen' or user_input == 'Stop Listen':
+			choice = '2'
+			skill_check()
+
+		else:
+			print('''
+		 Not a valid choice...
+		 Either type a number or type "Continue" / "Stop"
+		 ''')
+			
+def Scene_3():
+	clear_screen()
+	choice = None
+	while choice is None:
+		user_input = input('''
+					 From the darkness ahead of you...
+					 
+					 You hear a peculiar sound...
+					 
+					 What do you do?
+					 
+					 1 - Continue Walking
+					 2 - Stop to Listen
+					 
+					 > ''')
+		if user_input == '1' or user_input == 'Continue' or user_input == 'Continue Walking' or user_input == 'continue' or user_input == 'continue walking':
+			choice = '1'
+			combat()
+
+		elif user_input == '2' or user_input == 'Stop' or user_input == 'Stop to Listen' or user_input == 'stop' or user_input == 'stop to listen' or user_input == 'stop listen' or user_input == 'Stop Listen':
+			choice = '2'
+			skill_check()
+
+		else:
+			print('''
+		 Not a valid choice...
+		 Either type a number or type "Continue" / "Stop"
+		 ''')
+
+def skill_check():
+	clear_screen()
+	print('''
+	   A giant rock falls from the ceiling...
+	   Roll a die to see if you can dodge it...
+	   Or you will be crushed by it!
+	   ''')
+	roll = randint(1,6)
+	print('You rolled: '+str(roll))
+	if roll + character_dexterity > 10:
+		print('''
+		You dodge the stone and survive!
+		Although, you haven't escaped danger yet...
+		The bizarre noise in the darkness continues...
+		And...
+		It feels a lot closer now...
+		''')
+		input('Press Enter to Continue...')
+
+	else:
+		print('''
+		You are smashed by the rock...
+		You die...
+		The game is over...
+		''')
+		input('Press Enter to Exit the Game.')
+
+def combat():
+	clear_screen()
+	global character_stamina
+	print('A horrific orc attacks you!')
+	input('Press Enter to initiate combat...')
+# Use a list format for the monster characteristics / skills
+# This makes a simple monster character sheet
+	orc = [10, 14]
+# orc = [Strength, Stamina]
+	while orc[1] > 0 and character_stamina > 0:
+		char_roll = randint(1,6)
+		print('You rolled: '+str(char_roll))
+		monst_roll = randint(1,6)
+		print('The moster rolled: '+str(monst_roll))
+		if char_roll + character_strength >= monst_roll + orc[0]:
+			print('You hit the monster!')
+			orc[1] = orc[1] - randint(1,6)
+		else:
+			print('The monster hits you!')
+			character_stamina = character_stamina - randint(1,6)
+	if character_stamina > 0:
+		print('''
+		You defeated the orc!
+		Congratulations!
+		''')
+	else:
+		print('''
+		You lost...
+		Your fellow adventurers will never be freed...
+		And you're dead...
+		''')
+		input('Press Enter to Exit the Game.')
+
+Scene_1()
