@@ -448,6 +448,7 @@ def skill_check():
 		It feels a lot closer now...
 		''')
 		input('Press Enter to Continue...')
+		story()
 
 	else:
 		print('''
@@ -484,6 +485,8 @@ def combat():
 		You defeated the orc!
 		Congratulations!
 		''')
+		print('Press Enter to continue...')
+		story()
 
 	else:
 		print('''
@@ -493,4 +496,123 @@ def combat():
 		''')
 		input('Press Enter to Exit the Game.')
 
-Scene_1()
+def story():
+    begin = input("""After you enter the dungeon, you notice there are 2 hallways to choose from.\n
+                  Which direction do you choose?\n
+                  (Left/Right)""")
+
+    if begin == "Left":
+        archway = input("""You journey down this hallway towards what looks to be a couple of archways. \n
+                        One that is full of life, made from green vines that are blooming with flowers.\n
+                        The other not so much, made from bones and smelling possibly of herbs.\n
+                        Which do you go through?\n
+                        (Vines/Bones)""")
+        if archway == "Vines":
+            faefolk = input("""You come across curious faefolk!\n
+                            Their leader approaches you, \n
+                            'Why are you here adventurer?'\n
+                            (Not sure/Secrets of the dungeon)""")
+            if faefolk == "Not sure":
+                print("""The fae reads you aura...\n
+                      'I see...'\n
+                      'In that case...'\n
+                      The fae leader lifts her staff high above the ground and waves it slowly in the air.\n
+                      She has gifted you sight that shows you hidden treasures!""")
+            elif faefolk == "Secrets of the dungeon":
+                print("""The fae look confused...\n
+                      'I'm unsure what you mean?...\n
+                      What dungeon?...'\n
+                      You notice everything looks like the surface...\n
+                      You are suddenly in the town's tavern and you are speaking with townfolk...\n
+                      'Hmmm... I must have been day dreaming...'\n
+                      Unbeknownst to you... You have been captured by the fae!\n
+                      They have capsulated you into a flower bud!!
+                      You are under a spell keeping you in a dream-like state!!!""")
+        elif archway == "Bones":
+            unicorn = input("""You come across an undead unicorn skeleton!\n
+                            It looks over at you, takes a step toward you...\n
+                            How do you approach?
+                            (Head low and slowly/Unafraid and confident)""")
+            if unicorn == "Head low and slowly":
+                print("""As you approach slowly...\n
+                      The unicorn begins to bow to you!\n
+                      A sign of respect!\n
+                      The mystical creature allows you to ride it!!\n
+                      You now have bounded with the undead unicorn and it is your mount!!!""")
+            elif unicorn == "Unafraid and confident":
+                print("""As you approach...\n
+                      The unicorn see your display as disrespect!\n
+                      It rears up and rams you with it's horn!!\n
+                      You do not survive...""")
+    elif begin == "Right":
+        door = input("""Down this hallway, you notice the torches begin to flicker but not extinguish...\n
+                    Almost as if there is a draft, but there air feels still to you...\n
+                    In the dim light, you finally approach some doors.\n
+                    The door to the left is made of a silver metal and gives you a chill as you get closer.\n
+                    The door in the middle is made of wood with a golden knob.\n
+                    The door to the right is made of a bronze metal and feels warm to you.\n
+                    What door do you open?\n
+                    (Silver/Wood/Bronze)""")
+        if door == "Silver":
+            statue = input("""You open the door and see a statue of a goddess!\n
+                           As you step closer, you notice the statue is glowing...\n
+                           Your intuition tells you to do something...\n
+                           (Pray/Touch it)""")
+            if statue == "Pray":
+                print("""As you get down on your knees to pray...\n
+                      You hear something...\n
+                      You are attacked!\n
+                      Sneaky goblins rush you from every direction!!\n
+                      You do not survive...""")
+            elif statue == "Touch it":
+                print("""You approach the statue...\n
+                      As you begin to touch it, you start to feel the glow move into you...\n
+                      The goddess has imbued you with sacred essence!""")
+        elif door == "Wood":
+            spiders = input("""You step through the door and immediately slide down a path!\n
+                            When you reach the bottom, you notice there are spider webs everywhere...\n
+                            Focusing your eyes, you see more and more spiders...\n
+                            Then, through an opening in the webs, you see many large eyes getting closer to you...\n
+                            What do you do next??\n
+                            (Panic/Look around)""")
+            if spiders == "Panic":
+                print("""You begin to panic...\n
+                      The spiders can sense your anxiety...\n
+                      Before you know it, they have spun webs to trap you in place!\n
+                      The large spider creeps out of it's crevice...\n
+                      A small spider bites you first, which paralyzes you!!\n
+                      The larger spider then proceeds to eat you alive!!!\n
+                      You do not survive...""")
+            elif spiders == "Look around":
+                print("""As you look around, you notice a level on the ground near you...\n
+                      You reach for it and pull...\n
+                      A trap door below you opens!\n
+                      You slide through a tunnel...\n
+                      When you finally stop sliding, you see a meadow and trees.\n
+                      You have managed to escape to safety!""")
+        elif door == "Bronze":
+            dragon = input("""You open the door to see a mystical dragon in the center of the room!\n
+                           The dragon starts to speak to you telepathically...\n
+                           'I can sense you adventurer...\n
+                           Let me see what kind of adventurer you are...'\n
+                           (Trick and manipulate/Show the depths of your mind)""")
+            if dragon == "Trick and manipulate":
+                print("""You attempt to trick the dragon...\n
+                      As you try to manipulate the dragon to believe what you want...\n
+                      The dragon becomes INFURIATED!\n
+                      'How dare you try to trick me!'\n
+                      It rears back and roasts you with dragon fire!\n
+                      You do not survive...""")
+            elif dragon == "Show the depths of your mind":
+                print("""You allow the dragon to see deep into your mind...\n
+                      'How noble of you..'\n
+                      Because you were vulnerable with the dragon...\n
+                      She unravels her tail, showing you baby dragons!\n
+                      She gifts you the baby of your choosing to soul bond with!""")
+    else:
+        print(f"""This is not a valid choice adventurer!\n
+              {begin}""")
+
+
+if __name__ == "__main__":
+	Scene_1()
